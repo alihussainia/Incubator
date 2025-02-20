@@ -149,7 +149,7 @@ print("find below the 15 outperformer ranked by ESG score range")
 print("")
 # Display the 15 outperformer based on the yearly return and ranked by ESG score range.
 df_outperformers = df_final_results.groupby([group]).apply(
-    lambda x: x.sort_values(["Yearly return"], ascending=False)).head(XXX)
+    lambda x: x.sort_values(["Yearly return"], ascending=False)).head(15)
 print(df_outperformers)
 
 

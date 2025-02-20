@@ -117,4 +117,8 @@ for ticker in list_of_stocks:
 
 # --- STEP 8. Create a dataframe based on "data"
 df_final_results = pd.DataFrame(data,columns=['ticker', 'ticker company name', 'Yearly return', 'Sharpe Ratio', 'M2 Ratio','ESG Score'])
-print(XXX)
+print("Step 8 : df_final_results =",df_final_results)
+
+# save the dataframe in a csv file
+df_final_results.to_csv("final_results.csv", index=False)
+

@@ -71,24 +71,25 @@ def get_M2_ratio(yearly_RFR, stock_returns, nb_period_per_year, benchmark_return
 # -------------------------------------------------------------------------
 
 # Set the number of trading days in a year
-nb_of_trading_days = XXX
+nb_of_trading_days = 252
 #Risk Free Rate yearly rate
-RFR = XXX
+RFR = 0.0
 #Compute the daily returns from the Market
-MarketDailyReturn = df_market_data[("^GSPC", "Close")].XXX()
+MarketDailyReturn = df_market_data[("^GSPC", "Close")].pct_change()
 
 #Choose a ticker included in list_of_stocks
-ticker = "XXX"
+ticker = "ADBE"
 # Get the price values (Adjusted close price) from the financial data of the ticker
+ticker_daily_prices = df_stocks_data[ticker]["Close"]
 ticker_daily_prices = df_stocks_data[ticker]["Close"]
 
 
 # Compute the daily returns of the stock
 ticker_daily_returns = ticker_daily_prices.pct_change()
 # Compute the annual Sharpe ratio
-ticker_sharpe_ratio = get_sharpe_ratio(XXX,XXX, XXX)
+ticker_sharpe_ratio = get_sharpe_ratio(RFR, ticker_daily_returns, nb_of_trading_days)
 print("Sharpe ratio of ", ticker, "is equal to: ",ticker_sharpe_ratio )
 
 # Compute the annual M2 ratio
-ticker_m2_ratio = get_M2_ratio(XXX,XXX, XXX, XXX)
+ticker_m2_ratio = get_M2_ratio(RFR, ticker_daily_returns, nb_of_trading_days, MarketDailyReturn)
 print("M2 ratio of ", ticker, "is equal to: ",ticker_m2_ratio )
